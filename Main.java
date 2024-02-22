@@ -1,17 +1,16 @@
+//* KHIEV VIVADH */
+
 import java.util.Scanner;
 
-// DiscountRate interface
 interface DiscountRate {
     double getServiceDiscountRate(String type);
     double getProductDiscountRate(String type);
 }
 
-// Customer class implementing DiscountRate interface
 class Customer implements DiscountRate {
     private String customerName;
     private String customerType;
 
-    // Constructor
     public Customer(String customerName, String customerType) {
         this.customerName = customerName;
         this.customerType = customerType;
@@ -34,17 +33,16 @@ class Customer implements DiscountRate {
         this.customerType = customerType;
     }
 
-    // Implementing methods from DiscountRate interface
     public double getServiceDiscountRate(String type) {
         switch (type) {
             case "Premium":
-                return 0.20; // 20% discount for Premium
+                return 0.20; 
             case "Gold":
-                return 0.15; // 15% discount for Gold
+                return 0.15; 
             case "Silver":
-                return 0.10; // 10% discount for Silver
+                return 0.10; 
             default:
-                return 0.0; // 0% discount for Normal
+                return 0.0; 
         }
     }
 
@@ -55,9 +53,9 @@ class Customer implements DiscountRate {
             case "Gold":
                 return 0.15;
             case "Silver":
-                return 0.10; // 10% discount for Premium, Gold, and Silver
+                return 0.10; 
             default:
-                return 0.0; // 0% discount for Normal
+                return 0.0; 
         }
     }
 }
@@ -69,7 +67,6 @@ class Sale {
     private double serviceExpense;
     private double productExpense;
 
-    // Constructor
     public Sale(Customer customer, String date, double serviceExpense, double productExpense) {
         this.customer = customer;
         this.date = date;
@@ -77,7 +74,6 @@ class Sale {
         this.productExpense = productExpense - (productExpense * customer.getProductDiscountRate(customer.getCustomerType()));
     }
 
-    // Getter and setter methods
     public Customer getCustomer() {
         return customer;
     }
